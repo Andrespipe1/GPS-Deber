@@ -1,0 +1,7 @@
+{
+  "name": "migps",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

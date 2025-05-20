@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> GPS Location </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">GPS Location</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Current Location</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p *ngIf="latitude && longitude">
+        Latitude: {{ latitude }}<br>
+        Longitude: {{ longitude }}
+      </p>
+      <p *ngIf="!latitude || !longitude">Getting location...</p>
+
+      <ion-button expand="block" (click)="openGoogleMaps()" [disabled]="!latitude || !longitude">
+        <ion-icon slot="start" name="map"></ion-icon>
+        Open in Google Maps
+      </ion-button>
+
+      <ion-button expand="block" (click)="saveLocationToFirebase()" [disabled]="!latitude || !longitude" color="success">
+        <ion-icon slot="start" name="save"></ion-icon>
+        Save Location
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-toast
+    [isOpen]="showToast"
+    [message]="toastMessage"
+    [duration]="3000"
+    (didDismiss)="showToast = false">
+  </ion-toast>
+</ion-content>
