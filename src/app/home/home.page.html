@@ -23,6 +23,11 @@
       </p>
       <p *ngIf="!latitude || !longitude">Getting location...</p>
 
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input [(ngModel)]="locationName" placeholder="Enter a name for this location"></ion-input>
+      </ion-item>
+
       <ion-button expand="block" (click)="openGoogleMaps()" [disabled]="!latitude || !longitude">
         <ion-icon slot="start" name="map"></ion-icon>
         Open in Google Maps
